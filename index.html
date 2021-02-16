@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<style>
+    #btnReproducir{
+    outline:none;
+    border: 0;
+    background: none;
+    }
+    #btnDetener{
+
+    outline:none;
+    border: 0;
+    background: none;
+    margin-left: 0%;
+    }
+    #contenedor{
+    border:5px solid;
+    width: 57.2%;
+    margin-left: 21.4%;
+    
+    }
+    #visor{
+    float: right;
+    margin-top: 2.0%;
+    margin-bottom: 1.5%;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-dark bg-warning">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img src="/img/reproductor-de-video.png" alt="" width="30" height="24" class="d-inline-block align-top">
+             Estilizando Reproductor de Video  
+          </a>
+          <a class="navbar text-dark"  target="_blank"  href="https://github.com/PedroManuelJM" style="text-decoration: none;">
+            <img src="/img/github.png" alt=""  class="d-inline-block align-top" style="width: 32px;">
+            <span>
+                PedroManuelJM
+            </span>
+          </a>
+        </div>
+      </nav>
+    <div class="container">
+        <br>
+            <div class="col-12 col-sm-12 col-md-12">
+                <div class="ratio ratio-21x9">
+                    <video id="trailer">
+                        <source src="video/trailer.mp4"> 
+                    </video>
+                </div>
+                <div id="contenedor" class="">               
+                    <span id="visor" class="badge rounded-pill bg-warning text-dark "></span>
+                    <button class="" id="btnReproducir"> <img src="img/play.png" style="width: 48px; "></button>
+                    <button class="" id="btnDetener"><img src="img/pausa.png" style="width: 32px; "></button>  
+                </div>
+            </div>
+    </div>
+
+    <script>
+        var vbtnReproducir=document.getElementById("btnReproducir");
+        var vbtnDetener=document.getElementById("btnDetener");
+        var vtrailer=document.getElementById("trailer");
+        var vvisor=document.getElementById("visor");
+        vbtnReproducir.addEventListener("click",reproducir);
+        vbtnDetener.addEventListener("click",detener);
+
+        function reproducir(){
+            vtrailer.play();
+        }
+        function detener(){
+            vtrailer.pause();
+
+        }
+        setInterval(mostrarVisor,10);
+        function mostrarVisor(){
+           vvisor.innerText=parseFloat(vtrailer.currentTime.toFixed(2));
+        }
+    </script>
+</body>
+</html>
